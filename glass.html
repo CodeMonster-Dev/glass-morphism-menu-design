@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Glass Morphism | Beautiful Menu Design</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul>
+        <li class="active"><a href="#">
+            <ion-icon name="home-outline"></ion-icon>
+        </a></li>
+        <li><a href="#">
+            <ion-icon name="person-outline"></ion-icon>
+        </a></li>
+        <li><a href="#">
+            <ion-icon name="add-circle-outline"></ion-icon>
+        </a></li>
+        <li><a href="#">
+            <ion-icon name="settings-outline"></ion-icon>
+        </a></li>
+        <li><a href="#">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+        </a></li>
+        <div id="marker"></div>
+    </ul>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+    let marker = document.querySelector('#marker');
+    let list = document.querySelectorAll('ul li');
+
+    function moveindicator(e){
+        marker.style.left = e.offsetLeft+'px';
+        marker.style.width = e.offsetWidth+'px';
+    }
+
+    list.forEach(link => {
+        link.addEventListener('mousemove', (e) => {
+            moveindicator(e.target);
+        })
+    })
+
+    // Adding active class in hover element
+
+    function activeclass(){
+        list.forEach((item => item.classList.remove('active')));
+        this.classList.add('active');
+    }
+
+    list.forEach((item => item.addEventListener('mouseover', activeclass)));
+</script>
+
+</html>
